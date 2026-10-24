@@ -150,7 +150,14 @@
         <div class="icon-heart">❤️</div>
         <h2>Yeay! Keputusan yang Hebat!</h2>
         <p>Aku senang banget mendengarnya. Langsung kabari aku lewat WhatsApp ya untuk atur jadwalnya! Sampai ketemu lagi!</p>
-        <button onclick="contactWhatsApp()" class="btn btn-yes">Kirim Pesan Sekarang</button>
+        <!-- KODE BARU (Gunakan yang ini) -->
+<a href="https://wa.me" 
+   target="_blank" 
+   class="btn btn-yes" 
+   style="text-decoration: none; display: inline-block; line-height: 50px; height: 50px; padding: 0 35px;">
+   Kirim Pesan Sekarang
+</a>
+        
     </div>
 
     <!-- --- JAVASCRIPT LOGIC --- -->
@@ -185,18 +192,7 @@
             });
         }
 
-        // FUNGSI UTAMANYA DI SINI
-        function contactWhatsApp() {
-            // 1. GANTI NOMOR DI BAWAH INI DENGAN NOMOR WHATSAPP-MU (Wajib diawali kode negara 62, bukan angka 0)
-            // Contoh: Jika nomormu 08123456789, tulis menjadi "628123456789"
-            const phoneNumber = "6285707745230"; 
-
-            // 2. Isi pesan otomatis yang akan dikirim oleh temanmu
-            const text = encodeURIComponent("Halo! Aku sudah lihat websitenya. Yuk, kita atur waktu buat ketemuan atau ngobrol lagi! 😊");
-            
-            // 3. Membuka link chat WhatsApp di tab baru
-            window.open("https://wa.me" + phoneNumber  + "?text=" + text, '_blank');
-        }
+        
     </script>
     
 </body>
