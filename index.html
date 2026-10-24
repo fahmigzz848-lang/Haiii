@@ -120,6 +120,9 @@
             margin-bottom: 15px;
         }
     </style>
+        <!-- Tambahkan script library confetti ini di atas </head> -->
+    <script src="https://jsdelivr.net"></script>
+    
 </head>
 <body>
 
@@ -190,7 +193,32 @@
                 successCard.classList.remove('hidden');
             });
         }
-
+                if(btnYes) {
+            btnYes.addEventListener('click', () => {
+                mainCard.classList.add('hidden');
+                successCard.classList.remove('hidden');
+                
+                // --- EFEK KEJUTAN LEDAKAN EMOTE ---
+                // Ledakan kiri bawah
+                confetti({
+                    particleCount: 50,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0, y: 1 },
+                    colors: ['#ff7675', '#55efc4', '#74b9ff', '#ffeaa7']
+                });
+                
+                // Ledakan kanan bawah
+                confetti({
+                    particleCount: 50,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1, y: 1 },
+                    colors: ['#ff7675', '#55efc4', '#74b9ff', '#ffeaa7']
+                });
+            });
+                }
+        
         
     </script>
     
