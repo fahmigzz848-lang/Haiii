@@ -187,39 +187,37 @@
             btnNo.addEventListener('click', moveButton);
         }
 
-        if(btnYes) {
-            btnYes.addEventListener('click', () => {
-                mainCard.classList.add('hidden');
-                successCard.classList.remove('hidden');
-            });
-        }
                 if(btnYes) {
             btnYes.addEventListener('click', () => {
                 mainCard.classList.add('hidden');
                 successCard.classList.remove('hidden');
                 
-                // --- EFEK KEJUTAN LEDAKAN EMOTE ---
-                // Ledakan kiri bawah
+                // --- MEMBUAT SHAPE EMOJI HATI ---
+                const heart = confetti.shapeFromText({ text: '❤️', scalar: 3 });
+                
+                // --- EFEK KEJUTAN LEDAKAN EMOJI HATI ---
+                // Ledakan dari kiri bawah layar
                 confetti({
-                    particleCount: 50,
+                    particleCount: 40,
                     angle: 60,
-                    spread: 55,
+                    spread: 60,
                     origin: { x: 0, y: 1 },
-                    colors: ['#ff7675', '#55efc4', '#74b9ff', '#ffeaa7']
+                    shapes: [heart],
+                    scalar: 3
                 });
                 
-                // Ledakan kanan bawah
+                // Ledakan dari kanan bawah layar
                 confetti({
-                    particleCount: 50,
+                    particleCount: 40,
                     angle: 120,
-                    spread: 55,
+                    spread: 60,
                     origin: { x: 1, y: 1 },
-                    colors: ['#ff7675', '#55efc4', '#74b9ff', '#ffeaa7']
+                    shapes: [heart],
+                    scalar: 3
                 });
             });
                 }
-        
-        
+
     </script>
     
 </body>
