@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Sahabat Lamaku</title>
+    <style>
+        /* --- CSS STYLING --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #fff5f5 0%, #e8f0fe 100%);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+
+        .icon-heart {
+            font-size: 3rem;
+            color: #ff7675;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: #2d3436;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #636e72;
+            margin-bottom: 25px;
+        }
+
+        /* Bagian Nostalgia / Foto Placeholder */
+        .memory-box {
+            background: #f9f9f9;
+            border: 2px dashed #b2bec3;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            font-style: italic;
+            color: #b2bec3;
+        }
+
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            height: 50px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 12px 35px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .btn-yes {
+            background-color: #55efc4;
+            color: #2d3436;
+            box-shadow: 0 4px 15px rgba(85, 239, 196, 0.4);
+        }
+
+        .btn-yes:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(85, 239, 196, 0.6);
+        }
+
+        .btn-no {
+            background-color: #ff7675;
+            color: white;
+            position: absolute;
+            transition: left 0.1s ease, top 0.1s ease;
+        }
+
+        /* Halaman Sukses */
+        .hidden {
+            display: none;
+        }
+
+        .success-message h2 {
+            color: #2d3436;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HALAMAN UTAMA -->
+    <div id="main-card" class="container">
+        <div class="icon-heart">✨👋✨</div>
+        <h1>Halo, Sahabat Lamaku!</h1>
+        
+        <p>
+            Sudah lama ya kita tidak mengobrol seseru dulu. Kesibukan masing-masing terkadang membuat kita berjarak, tapi kenangan seru kita selalu punya tempat tersendiri di ingatanku.
+        </p>
+
+        <!-- Kamu bisa mengganti teks ini dengan memori spesifik kalian -->
+        <div class="memory-box">
+            "Ingat tidak waktu kita tertawa sampai nangis bareng dulu? Aku kangen momen-momen seperti itu."
+        </div>
+
+        <p><strong>Bagaimana kalau kita luangkan waktu untuk ngopi atau sekadar *catch up* lewat telepon minggu ini?</strong></p>
+
+        <div class="buttons-container">
+            <button id="btn-yes" class="btn btn-yes">Mau Banget!</button>
+            <button id="btn-no" class="btn btn-no" style="left: 60%;">Enggak Dulu</button>
+        </div>
+    </div>
+
+    <!-- HALAMAN SETELAH DIKLIK 'MAU BANGET' -->
+    <div id="success-card" class="container hidden">
+        <div class="icon-heart">❤️</div>
+        <h2>Yeay! Keputusan yang Hebat!</h2>
+        <p>Aku senang banget mendengarnya. Langsung kabari aku lewat WhatsApp ya untuk atur jadwalnya! Sampai ketemu lagi!</p>
+        <button onclick="contactWhatsApp()" class="btn btn-yes">Kirim Pesan Sekarang</button>
+    </div>
+
+    <!-- --- JAVASCRIPT LOGIC --- -->
+    <script>
+        const btnNo = document.getElementById('btn-no');
+        const btnYes = document.getElementById('btn-yes');
+        const mainCard = document.getElementById('main-card');
+        const successCard = document.getElementById('success-card');
+        const container = document.querySelector('.buttons-container');
+
+        // Fitur Jahil: Tombol "Enggak Dulu" akan menghindar saat didekati/diklik
+        function moveButton() {
+            // Mendapatkan batas area container tombol agar tombol tidak lari keluar layar
+            const containerWidth = container.clientWidth;
+            const containerHeight = container.clientHeight;
+            
+            // Menghitung posisi random yang aman
+            const randomX = Math.floor(Math.random() * (containerWidth - btnNo.clientWidth));
+            const randomY = Math.floor(Math.random() * (containerHeight - 20)) - 10; // sedikit variasi vertikal
+
+            btnNo.style.left = `${randomX}px`;
+            btnNo.style.top = `${randomY}px`;
+        }
+
+        btnNo.addEventListener('mouseover', moveButton);
+        btnNo.addEventListener('click', moveButton);
+
+        // Jika tombol "Mau Banget!" diklik
+        btnYes.addEventListener('click', () => {
+            mainCard.classList.add('hidden');
+            successCard.classList.remove('hidden');
+        });
+
+        // Fungsi mengarahkan ke WhatsApp (Ganti nomor telepon & teks sesuai kebutuhanmu)
+        function contactWhatsApp() {
+            const phoneNumber = "628123456789"; // GANTI DENGAN NOMOR WA-MU (awali dengan 62)
+            const text = encodeURIComponent("Halo! Aku sudah lihat websitenya. Yuk, kita atur waktu buat ketemuan atau ngobrol lagi! 😊");
+            window.open(`https://wa.me{phoneNumber}?text=${text}`, '_blank');
+        }
+    </script>
+</body>
+</html>
