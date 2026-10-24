@@ -154,6 +154,7 @@
     </div>
 
     <!-- --- JAVASCRIPT LOGIC --- -->
+        <!-- --- JAVASCRIPT LOGIC --- -->
     <script>
         const btnNo = document.getElementById('btn-no');
         const btnYes = document.getElementById('btn-yes');
@@ -161,35 +162,42 @@
         const successCard = document.getElementById('success-card');
         const container = document.querySelector('.buttons-container');
 
-        // Fitur Jahil: Tombol "Enggak Dulu" akan menghindar saat didekati/diklik
         function moveButton() {
-            // Mendapatkan batas area container tombol agar tombol tidak lari keluar layar
             const containerWidth = container.clientWidth;
             const containerHeight = container.clientHeight;
             
-            // Menghitung posisi random yang aman
             const randomX = Math.floor(Math.random() * (containerWidth - btnNo.clientWidth));
-            const randomY = Math.floor(Math.random() * (containerHeight - 20)) - 10; // sedikit variasi vertikal
+            const randomY = Math.floor(Math.random() * (containerHeight - 20)) - 10;
 
             btnNo.style.left = `${randomX}px`;
             btnNo.style.top = `${randomY}px`;
         }
 
-        btnNo.addEventListener('mouseover', moveButton);
-        btnNo.addEventListener('click', moveButton);
+        if(btnNo) {
+            btnNo.addEventListener('mouseover', moveButton);
+            btnNo.addEventListener('click', moveButton);
+        }
 
-        // Jika tombol "Mau Banget!" diklik
-        btnYes.addEventListener('click', () => {
-            mainCard.classList.add('hidden');
-            successCard.classList.remove('hidden');
-        });
+        if(btnYes) {
+            btnYes.addEventListener('click', () => {
+                mainCard.classList.add('hidden');
+                successCard.classList.remove('hidden');
+            });
+        }
 
-        // Fungsi mengarahkan ke WhatsApp (Ganti nomor telepon & teks sesuai kebutuhanmu)
+        // FUNGSI UTAMANYA DI SINI
         function contactWhatsApp() {
-            const phoneNumber = "628123456789"; // GANTI DENGAN NOMOR WA-MU (awali dengan 62)
+            // 1. GANTI NOMOR DI BAWAH INI DENGAN NOMOR WHATSAPP-MU (Wajib diawali kode negara 62, bukan angka 0)
+            // Contoh: Jika nomormu 08123456789, tulis menjadi "628123456789"
+            const phoneNumber = "6285707745230"; 
+
+            // 2. Isi pesan otomatis yang akan dikirim oleh temanmu
             const text = encodeURIComponent("Halo! Aku sudah lihat websitenya. Yuk, kita atur waktu buat ketemuan atau ngobrol lagi! 😊");
-            window.open(`https://wa.me{phoneNumber}?text=${text}`, '_blank');
+            
+            // 3. Membuka link chat WhatsApp di tab baru
+            window.open("https://wa.me" + 6285707745230 + "?text=" + haloo, '_blank');
         }
     </script>
+    
 </body>
 </html>
