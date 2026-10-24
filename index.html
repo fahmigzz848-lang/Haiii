@@ -187,37 +187,7 @@
             btnNo.addEventListener('click', moveButton);
         }
 
-        if(btnYes) {
-            btnYes.addEventListener('click', () => {
-                mainCard.classList.add('hidden');
-                successCard.classList.remove('hidden');
-                
-                // --- MEMBUAT SHAPE EMOJI HATI ---
-                const heart = confetti.shapeFromText({ text: '❤️', scalar: 3 });
-                
-                // --- EFEK KEJUTAN LEDAKAN EMOJI HATI ---
-                // Ledakan dari kiri bawah layar
-                confetti({
-                    particleCount: 40,
-                    angle: 60,
-                    spread: 60,
-                    origin: { x: 0, y: 1 },
-                    shapes: [heart],
-                    scalar: 3
-                });
-                
-                // Ledakan dari kanan bawah layar
-                confetti({
-                    particleCount: 40,
-                    angle: 120,
-                    spread: 60,
-                    origin: { x: 1, y: 1 },
-                    shapes: [heart],
-                    scalar: 3
-                });
-            });
-                }
-
+        
     </script>
     
 </body>
